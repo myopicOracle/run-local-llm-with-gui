@@ -1,11 +1,14 @@
 const express = require('express');
 const cors = require('cors');
+const axios = require('axios');
 const path = require('path');
-const { exec } = require('child_process');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Use the completion endpoint for a complete response
+const OLLAMA_API = 'http://localhost:11434/api/chat';
 
 app.post('/predict', async (req, res) => {
   const { prompt } = req.body;
@@ -14,20 +17,19 @@ app.post('/predict', async (req, res) => {
     return res.status(400).json({ error: 'No prompt provided' });
   }
   
-  // Use child_process to run ollama CLI directly (like the Python version)
-  exec(`ollama run tinyllama "${prompt.replace(/"/g, '\\"')}"`, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error: ${error.message}`);
-      return res.status(500).json({ error: error.message });
-    }
+  try {
+    const response = await axios.post(OLLAMA_API, {
+      model: 'tinyllama',
+      messages: [{ role: 'user', content: prompt }]
+    });
     
-    if (stderr) {
-      console.error(`stderr: ${stderr}`);
-    }
-    
-    // Return the raw output
-    res.json({ response: stdout.trim() });
-  });
+    // Extract the full response text
+    const text = response.data.message?.content || "No response received";
+    res.json({ response: text });
+  } catch (error) {
+    console.error('Error:', error.message);
+    res.status(500).json({ error: error.message });
+  }
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
