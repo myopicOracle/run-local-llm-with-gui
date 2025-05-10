@@ -1,16 +1,24 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const path = require('path');
 
 const app = express();
-app.use(cors());
+
+// Configure CORS to accept requests from your deployed frontend
+app.use(cors({
+  origin: process.env.FRONTEND_URL || '*',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Ollama API endpoint
-const OLLAMA_API = 'http://localhost:11434/api';
+const OLLAMA_API = process.env.OLLAMA_API || 'http://localhost:11434/api';
 
-app.post('/generate', async (req, res) => {
+app.post('/api/generate', async (req, res) => {
   const { prompt } = req.body;
   
   if (!prompt || !prompt.trim()) {
@@ -27,7 +35,7 @@ app.post('/generate', async (req, res) => {
     
     // Make a request to Ollama API with responseType: 'stream'
     const response = await axios.post(`${OLLAMA_API}/generate`, {
-      model: 'tinyllama',
+      model: process.env.OLLAMA_MODEL || 'tinyllama',
       prompt: prompt,
       stream: true // Enable streaming
     }, { 
@@ -69,14 +77,14 @@ app.post('/generate', async (req, res) => {
   }
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', message: 'Backend is running' });
 });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Backend server running on http://localhost:${PORT}`);
   console.log(`Ollama API endpoint: ${OLLAMA_API}`);
+  console.log(`To expose this server publicly, run: npm run tunnel`);
 });

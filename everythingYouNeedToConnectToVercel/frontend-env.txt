@@ -1,0 +1,7 @@
+# Backend API URL
+# In development, this will be your local server
+# For production, use your localtunnel URL
+REACT_APP_API_URL=http://localhost:5000/api
+
+# For Vercel deployment, you'll need to set this as an environment variable
+# in the Vercel dashboard

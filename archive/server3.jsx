@@ -20,48 +20,21 @@ app.post('/generate', async (req, res) => {
   try {
     console.log(`Sending prompt to Ollama: "${prompt}"`);
     
-    // Set headers for SSE (Server-Sent Events)
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('Connection', 'keep-alive');
-    
-    // Make a request to Ollama API with responseType: 'stream'
     const response = await axios.post(`${OLLAMA_API}/generate`, {
       model: 'tinyllama',
-      prompt: prompt,
-      stream: true // Enable streaming
+      prompt: prompt
     }, { 
-      responseType: 'stream',
-      timeout: 60000 
+      timeout: 30000 
     });
     
-    console.log('Stream connected to Ollama');
+    console.log('Ollama response:', response.data);
     
-    // Pipe the response stream directly to our response
-    response.data.on('data', (chunk) => {
-      const chunkStr = chunk.toString();
-      try {
-        // Send each chunk as a SSE event
-        res.write(`data: ${chunkStr}\n\n`);
-      } catch (error) {
-        console.error('Error processing chunk:', error);
-      }
+    // Return the response directly - examining what we get back
+    res.json({ 
+      response: response.data.response || response.data.text || JSON.stringify(response.data) 
     });
-    
-    response.data.on('end', () => {
-      console.log('Stream ended');
-      // Send a final event signaling the end of the stream
-      res.write('data: [DONE]\n\n');
-      res.end();
-    });
-    
-    response.data.on('error', (err) => {
-      console.error('Stream error:', err);
-      res.end();
-    });
-    
   } catch (error) {
-    console.error('Error connecting to Ollama:', error.message);
+    console.error('Error calling Ollama:', error.message);
     if (error.response) {
       console.error('Response error data:', error.response.data);
     }

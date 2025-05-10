@@ -1,13 +1,16 @@
-async function getPrediction(prompt) {
-  const responseDiv = document.getElementById('response');
-  responseDiv.innerHTML = 'Waiting for response...';
-  
-  // Store the complete response
-  let fullResponse = '';
-  
+// Default to localhost in development, override in production
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
+/**
+ * Sends a prompt to the Ollama LLM and returns a stream reader
+ * @param {string} prompt - The prompt to send to the LLM
+ * @param {Function} onChunk - Callback for each chunk of text received
+ * @param {Function} onDone - Callback when stream is complete
+ * @param {Function} onError - Callback for errors
+ */
+export async function generateCompletion(prompt, onChunk, onDone, onError) {
   try {
-    // Make a fetch request that will handle the streaming response
-    const response = await fetch('/generate', {
+    const response = await fetch(`${API_URL}/generate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ prompt })
@@ -20,12 +23,14 @@ async function getPrediction(prompt) {
     // Get a reader from the response body stream
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
+    let fullResponse = '';
     
-    // Read the stream
+    // Process the stream
     while (true) {
       const { value, done } = await reader.read();
       
       if (done) {
+        if (onDone) onDone(fullResponse);
         break;
       }
       
@@ -50,28 +55,31 @@ async function getPrediction(prompt) {
             // Append this chunk to the full response
             fullResponse += jsonData.response;
             
-            // Update the UI with the current accumulated response
-            responseDiv.innerHTML = `<strong>Response:</strong> ${fullResponse}`;
+            // Call the callback with the chunk
+            if (onChunk) onChunk(jsonData.response, fullResponse);
           }
         } catch (err) {
           console.error('Error parsing JSON:', err, eventData);
         }
       }
     }
-    
-    responseDiv.innerHTML = `<strong>Complete Response:</strong> ${fullResponse}`;
-    
   } catch (error) {
-    console.error('Error in getPrediction:', error);
-    responseDiv.innerHTML = `Request failed: ${error.message}`;
+    console.error('Error in generateCompletion:', error);
+    if (onError) onError(error);
   }
 }
 
-document.getElementById('submit').addEventListener('click', () => {
-  const prompt = document.getElementById('prompt').value.trim();
-  if (!prompt) {
-    alert('Please enter a prompt.');
-    return;
+/**
+ * Checks if the backend API is reachable
+ * @returns {Promise<boolean>} True if the API is reachable
+ */
+export async function checkApiHealth() {
+  try {
+    const response = await fetch(`${API_URL}/health`);
+    const data = await response.json();
+    return data.status === 'ok';
+  } catch (error) {
+    console.error('API health check failed:', error);
+    return false;
   }
-  getPrediction(prompt);
-});
+}
