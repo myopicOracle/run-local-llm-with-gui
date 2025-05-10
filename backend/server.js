@@ -7,8 +7,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Ollama API endpoint
-const OLLAMA_API = 'http://localhost:11434/api';
+// Use the completion endpoint for a complete response
+const OLLAMA_API = 'http://localhost:11434/api/chat';
 
 app.post('/predict', async (req, res) => {
   const { prompt } = req.body;
@@ -18,26 +18,16 @@ app.post('/predict', async (req, res) => {
   }
   
   try {
-    console.log(`Sending prompt to Ollama: "${prompt}"`);
-    
-    const response = await axios.post(`${OLLAMA_API}/generate`, {
+    const response = await axios.post(OLLAMA_API, {
       model: 'tinyllama',
-      prompt: prompt
-    }, { 
-      timeout: 30000 
+      messages: [{ role: 'user', content: prompt }]
     });
     
-    console.log('Ollama response:', response.data);
-    
-    // Return the response directly - examining what we get back
-    res.json({ 
-      response: response.data.response || response.data.text || JSON.stringify(response.data) 
-    });
+    // Extract the full response text
+    const text = response.data.message?.content || "No response received";
+    res.json({ response: text });
   } catch (error) {
-    console.error('Error calling Ollama:', error.message);
-    if (error.response) {
-      console.error('Response error data:', error.response.data);
-    }
+    console.error('Error:', error.message);
     res.status(500).json({ error: error.message });
   }
 });
@@ -51,5 +41,4 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`Ollama API endpoint: ${OLLAMA_API}`);
 });
