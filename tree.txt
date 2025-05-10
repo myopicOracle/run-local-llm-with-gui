@@ -1,20 +1,16 @@
 .
-./.git
-./.git/COMMIT_EDITMSG
-./.git/config
-./.git/description
-./.git/HEAD
-./.git/hooks
-./.git/index
-./.git/info
-./.git/logs
-./.git/objects
-./.git/refs
-./backend
-./backend/node_modules
-./backend/package-lock.json
-./backend/package.json
-./backend/public
-./backend/server.js
-./frontend
-./tree.txt
+|   
++---archive
+|       debug_script.js
+|       
++---backend
+|   |   package-lock.json
+|   |   package.json
+|   |   server.js
+|   |   
+|   \---public
+|           index.html
+|           script.js
+|           styles.css
+|           
+\---frontend
