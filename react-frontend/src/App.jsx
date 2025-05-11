@@ -49,7 +49,7 @@ const App = () => {
               color: 'inherit',
               textDecoration: 'none',
               position: 'fixed',
-              bottom: '3vw',
+              bottom: '30px',
               left: '50%',
               transform: 'translateX(-50%)',
               // textShadow: '0 0 6px rgba(255, 255, 255, 0.8), 0 0 12px rgba(255, 255, 255, 0.6)', // Enhanced glow effect

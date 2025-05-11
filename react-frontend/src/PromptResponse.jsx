@@ -630,7 +630,7 @@ const StyledWrapper = styled.div`
   }
 
   .prompt {
-    background-color: #010201;
+    background-color:rgba(1, 2, 1, 0.75);
     border: none;
     resize: none;
     overflow-y: auto; // Change from hidden to auto
@@ -638,12 +638,12 @@ const StyledWrapper = styled.div`
     scrollbar-width: thin; // For Firefox
     padding: 24px 70px 60px 60px;
     width: 70vw;
-    height: 30vh;
+    height: 15vh;
     border-radius: 10px;
     color: white;
     // padding-inline: 59px 146px;
     font-size: 12px;
-    backdrop-filter: blur(5px); // Add subtle blur effect
+    backdrop-filter: blur(20px); // Add subtle blur effect
     box-shadow: 0 0 20px rgba(207, 48, 170, 0.1); // Add subtle glow
 
     // Add custom scrollbar styling
@@ -718,7 +718,7 @@ const StyledWrapper = styled.div`
     text-align: center;
     font-family: 'Poppins', sans-serif;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 700;
     text-decoration: none;
     display: inline-block;
     margin: 3px 1px;
@@ -820,7 +820,7 @@ const StyledWrapper = styled.div`
   @media (min-width: 768px) {
 
   .prompt {
-    background-color: #010201;
+    background-color:rgba(1, 2, 1, 0.8);
     border: none;
     resize: none;
     overflow-y: auto; // Change from hidden to auto
@@ -832,8 +832,8 @@ const StyledWrapper = styled.div`
     border-radius: 10px;
     color: white;
     padding-inline: 59px 146px;
-    font-size: 16px;
-    backdrop-filter: blur(5px); // Add subtle blur effect
+    font-size: 14px;
+    backdrop-filter: blur(15px); // Add subtle blur effect
     box-shadow: 0 0 20px rgba(207, 48, 170, 0.1); // Add subtle glow
 
     // Add custom scrollbar styling
@@ -851,6 +851,16 @@ const StyledWrapper = styled.div`
     }
   }
 
+  .prompt::placeholder {
+    color: #c0b9c0;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .prompt:focus {
+    outline: none;
+  }
+
   #submit {
     // background: linear-gradient(90deg, #402fb5, #cf30aa);
     background: linear-gradient(180deg, #161329, black, #1d1b4b);
@@ -861,7 +871,8 @@ const StyledWrapper = styled.div`
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 700;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 10px;
