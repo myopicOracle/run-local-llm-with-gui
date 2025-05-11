@@ -9,7 +9,7 @@ const PromptResponse = () => {
 
   const getPrediction = async (prompt) => {
     setIsLoading(true);
-    setResponse('Waiting for response...');
+    setResponse('');
     let fullResponse = '';
 
     try {
