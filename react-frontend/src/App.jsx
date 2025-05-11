@@ -1,8 +1,7 @@
 import React from 'react';
-import { createGlobalStyle } from 'styled-components';
-import styled from 'styled-components';
-import PredictionComponent from './PredictionComponent';
-import Input from './Input';
+import styled, { createGlobalStyle } from 'styled-components';
+// import styled from 'styled-components';
+import PromptResponse from './PromptResponse';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -39,8 +38,7 @@ const App = () => {
       <AppWrapper>
         <h1 className="title-orbitron" style={{ fontSize: 'clamp(28px, 5vw, 60px)' /* Test override */ }}>Intelli-G A.I.</h1>
         {/* <h1 className="title-exo2">Intelli-G A.I.</h1> */}
-        <Input />
-        <PredictionComponent />
+        <PromptResponse />
         <h1
           className="title-orbitron"
           style={{ fontSize: 'clamp(8px, 10px, 14px)'}}
