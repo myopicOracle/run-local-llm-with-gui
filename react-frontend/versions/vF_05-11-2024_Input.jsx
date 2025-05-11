@@ -70,17 +70,17 @@ const StyledWrapper = styled.div`
     filter: blur(3px) brightness(1.2); // Increased brightness
   }
 
-  // .grid {
-  //   height: 800px;
-  //   width: 800px;
-  //   background-image: linear-gradient(to right, #0f0f10 1px, transparent 1px),
-  //     linear-gradient(to bottom, #0f0f10 1px, transparent 1px);
-  //   background-size: 1rem 1rem;
-  //   background-position: center center;
-  //   position: absolute;
-  //   z-index: -1;
-  //   filter: blur(1px);
-  // }
+  .grid {
+    height: 800px;
+    width: 800px;
+    background-image: linear-gradient(to right, #0f0f10 1px, transparent 1px),
+      linear-gradient(to bottom, #0f0f10 1px, transparent 1px);
+    background-size: 1rem 1rem;
+    background-position: center center;
+    position: absolute;
+    z-index: -1;
+    filter: blur(1px);
+  }
 
   .white,
   .border,

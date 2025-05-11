@@ -50,37 +50,33 @@ const StyledWrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: transparent; // Changed from #010201
-  isolation: isolate; // Add this to create stacking context
+  min-width: 300px;
+  background-color: transparent;
 
-  // Add this to create the grid effect with better contrast
   &::before {
     content: '';
     position: absolute;
     inset: 0;
     background-image: linear-gradient(to right, rgba(15, 15, 16, 0.2) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(15, 15, 16, 0.2) 1px, transparent 1px);
-    background-size: 1rem 1rem;
+    background-size: 2rem 2rem; /* Scalable grid size */
     mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
     z-index: -2;
   }
 
-  // Enhance the glow effects
-  .glow, .white, .border, .darkBorderBg {
-    filter: blur(3px) brightness(1.2); // Increased brightness
+  .grid {
+    height: 80vh;
+    width: 80vw;
+    max-height: 800px;
+    max-width: 800px;
+    background-image: linear-gradient(to right, #0f0f10 1px, transparent 1px),
+      linear-gradient(to bottom, #0f0f10 1px, transparent 1px);
+    background-size: 1rem 1rem;
+    background-position: center center;
+    position: absolute;
+    z-index: -1;
+    filter: blur(1px);
   }
-
-  // .grid {
-  //   height: 800px;
-  //   width: 800px;
-  //   background-image: linear-gradient(to right, #0f0f10 1px, transparent 1px),
-  //     linear-gradient(to bottom, #0f0f10 1px, transparent 1px);
-  //   background-size: 1rem 1rem;
-  //   background-position: center center;
-  //   position: absolute;
-  //   z-index: -1;
-  //   filter: blur(1px);
-  // }
 
   .white,
   .border,
@@ -88,14 +84,48 @@ const StyledWrapper = styled.div`
   .glow {
     max-height: 70px;
     max-width: 314px;
-    height: 100%;
-    width: 100%;
+    height: 10vh;
+    width: 50vw;
+    max-width: 314px;
     position: absolute;
     overflow: hidden;
     z-index: -1;
-    /* Border Radius */
     border-radius: 12px;
     filter: blur(3px);
+  }
+
+  .prompt {
+    background-color: #010201;
+    border: none;
+    resize: none;
+    overflow-y: hidden;
+    padding: 2vw 20vw 1vw 6vw; 
+    width: 80vw;
+    max-width: 602px;
+    height: 15vh;
+    max-height: 78px;
+    border-radius: 1.5rem;
+    color: white;
+    font-size: 1rem;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 20px rgba(207, 48, 170, 0.1);
+    transition: width 0.3s ease, height 0.3s ease, padding 0.3s ease; /* Smooth transitions */
+  }
+
+  #poda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .prompt::placeholder {
+    color: #c0b9c0;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .prompt:focus {
+    outline: none;
   }
 
   #main:focus-within > #input-mask {
@@ -322,124 +352,64 @@ const StyledWrapper = styled.div`
     }
   }
 
-  #poda {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .prompt {
-    background-color: #010201;
-    border: none;
-    resize: none;
-    overflow-y: hidden;
-    padding: 24px 70px 60px 60px;
-    width: 70vw;
-    height: 30vh;
-    border-radius: 10px;
-    color: white;
-    // padding-inline: 59px 146px;
-    font-size: 12px;
-    backdrop-filter: blur(5px); // Add subtle blur effect
-    box-shadow: 0 0 20px rgba(207, 48, 170, 0.1); // Add subtle glow
-  }
-
-  .prompt::placeholder {
-    color: #c0b9c0;
-    font-size: 12px;
-    font-weight: 500;
-  }
-
-  .prompt:focus {
-    outline: none;
-  }
-
-  #submit {
-    // background: linear-gradient(90deg, #402fb5, #cf30aa);
+#submit {
     background: linear-gradient(180deg, #161329, black, #1d1b4b);
-    border: 1px solid transparent;
     border: none;
     color: white;
-    padding: 3px 8px;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    text-decoration: none;
-    display: inline-block;
-    margin: 3px 1px;
+    padding: 1.5vw 2vw;
+    font-size: 1rem;
     cursor: pointer;
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
+    border-radius: 1rem;
+    width: 20vw;
+    max-width: 64px;
+    height: 8vh;
+    max-height: 40px;
     backdrop-filter: blur(5px);
     box-shadow: 0 0 15px rgba(207, 48, 170, 0.15);
+    transition: width 0.3s ease, height 0.3s ease, padding 0.3s ease; /* Smooth transitions */
   }
-
-  // #submit {
-  //   position: absolute;
-  //   top: 8px;
-  //   right: 8px;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   z-index: 2;
-  //   max-height: 40px;
-  //   max-width: 64px;
-  //   height: 100%;
-  //   width: 100%;
-
-  //   isolation: isolate;
-  //   overflow: hidden;
-  //   /* Border Radius */
-  //   border-radius: 10px;
-  //   background: linear-gradient(180deg, #161329, black, #1d1b4b);
-  //   border: 1px solid transparent;
-  // }
 
   #filter-icon {
     position: absolute;
-    bottom: 21px; /* Changed from top to bottom */
-    right: 21px;
+    bottom: 3vw;
+    right: 3vw;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
-    max-height: 30px;
-    max-width: 80px;
-    height: 100%;
-    width: 100%;
-
-    isolation: isolate;
-    overflow: hidden;
-    /* Border Radius */
-    border-radius: 10px;
+    height: 8vh;
+    max-height: 40px;
+    width: 25vw;
+    max-width: 120px;
+    border-radius: 1rem;
     background: linear-gradient(180deg, #161329, black, #1d1b4b);
-    border: 1px solid transparent;
-
     box-shadow: 0 0 15px rgba(207, 48, 170, 0.15);
+    transition: width 0.3s ease, height 0.3s ease, bottom 0.3s ease, right 0.3s ease; /* Smooth transitions */
   }
 
   .filterBorder {
-    height: 32px;
-    width: 82px;
+    height: 8vh;
+    max-height: 42px;
+    width: 25vw;
+    max-width: 122px;
     position: absolute;
     overflow: hidden;
-    bottom: 20px; /* Changed from top to bottom */
-    right: 20px;
-    border-radius: 10px;
+    bottom: 3vw;
+    right: 3vw;
+    border-radius: 1rem;
+    transition: width 0.3s ease, height 0.3s ease, bottom 0.3s ease, right 0.3s ease; /* Smooth transitions */
   }
 
   .filterBorder::before {
     content: "";
-
-    text-align: center;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(90deg);
-    position: absolute;
-    width: 600px;
-    height: 600px;
+    width: 100vw;
+    max-width: 600px;
+    height: 100vw;
+    max-height: 600px;
     background-repeat: no-repeat;
     background-position: 0 0;
     filter: brightness(1.35);
@@ -453,124 +423,100 @@ const StyledWrapper = styled.div`
     );
     animation: rotate 4s linear infinite;
   }
+
   #main {
     position: relative;
   }
+
   #search-icon {
     position: absolute;
-    left: 20px;
-    top: 22px;
+    left: 3vw;
+    top: 3vw;
   }
 
   /* Mobile-first media queries */
   @media (min-width: 768px) {
-
-  .prompt {
-    background-color: #010201;
-    border: none;
-    resize: none;
-    overflow-y: hidden;
-    padding: 24px 20px;
-    width: 602px;
-    height: 78px;
-    border-radius: 10px;
-    color: white;
-    padding-inline: 59px 146px;
-    font-size: 16px;
-    backdrop-filter: blur(5px); // Add subtle blur effect
-    box-shadow: 0 0 20px rgba(207, 48, 170, 0.1); // Add subtle glow
-  }
-
-  #submit {
-    // background: linear-gradient(90deg, #402fb5, #cf30aa);
-    background: linear-gradient(180deg, #161329, black, #1d1b4b);
-    border: 1px solid transparent;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 0 15px rgba(207, 48, 170, 0.15);
-  }
-
-
-  #filter-icon {
-    position: absolute;
-    bottom: 21px; /* Changed from top to bottom */
-    right: 21px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    max-height: 40px;
-    max-width: 120px;
-    height: 100%;
-    width: 100%;
-
-    isolation: isolate;
-    overflow: hidden;
-    /* Border Radius */
-    border-radius: 10px;
-    background: linear-gradient(180deg, #161329, black, #1d1b4b);
-    border: 1px solid transparent;
-
-    box-shadow: 0 0 15px rgba(207, 48, 170, 0.15);
-  }
-
-  .filterBorder {
-      height: 42px;
-      width: 122px;
-      position: absolute;
-      overflow: hidden;
-      bottom: 20px; /* Changed from top to bottom */
-      right: 20px;
-      border-radius: 10px;
+    .prompt {
+      width: 60vw;
+      max-width: 602px;
+      height: 12vh;
+      max-height: 78px;
+      padding: 2vw 20vw 1vw 6vw;
     }
 
-    .filterBorder::before {
-      content: "";
-
-      text-align: center;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(90deg);
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      background-repeat: no-repeat;
-      background-position: 0 0;
-      filter: brightness(1.35);
-      background-image: conic-gradient(
-        rgba(0, 0, 0, 0),
-        #3d3a4f,
-        rgba(0, 0, 0, 0) 50%,
-        rgba(0, 0, 0, 0) 50%,
-        #3d3a4f,
-        rgba(0, 0, 0, 0) 100%
-      );
-      animation: rotate 4s linear infinite;
+    #submit {
+      width: 15vw;
+      max-width: 64px;
+      height: 6vh;
+      max-height: 40px;
+      padding: 1vw 1.5vw;
     }
 
-    #main {
-      position: relative;
+    #filter-icon {
+      width: 20vw;
+      max-width: 120px;
+      height: 6vh;
+      max-height: 40px;
+      bottom: 2vw;
+      right: 2vw;
+    }
+
+    .filterBorder {
+      width: 20vw;
+      max-width: 122px;
+      height: 6vh;
+      max-height: 42px;
+      bottom: 2vw;
+      right: 2vw;
     }
 
     #search-icon {
-      position: absolute;
-      left: 20px;
-      top: 22px;
+      left: 2vw;
+      top: 2vw;
     }
-
   }
 
+  @media (min-width: 1024px) {
+    .prompt {
+      width: 50vw;
+      max-width: 602px;
+      height: 10vh;
+      max-height: 78px;
+      padding: 1vw 12vw 1vw 5vw;
+    }
+
+    #submit {
+      width: 10vw;
+      max-width: 64px;
+      height: 5vh;
+      max-height: 40px;
+      padding: 0.5vw 1vw;
+    }
+
+    #filter-icon {
+      width: 15vw;
+      max-width: 120px;
+      height: 5vh;
+      max-height: 40px;
+      bottom: 1.5vw;
+      right: 1.5vw;
+    }
+
+    .filterBorder {
+      width: 15vw;
+      max-width: 122px;
+      height: 5vh;
+      max-height: 42px;
+      bottom: 1.5vw;
+      right: 1.5vw;
+    }
+
+    #search-icon {
+      left: 1.5vw;
+      top: 1.5vw;
+    }
+  }
 `;
 
 export default Input;
+// Note: The above code is a React component styled with styled-components. It creates a responsive input area with various visual effects and animations. The media queries adjust the styles for different screen sizes, ensuring a good user experience on mobile and desktop devices.

@@ -70,17 +70,17 @@ const StyledWrapper = styled.div`
     filter: blur(3px) brightness(1.2); // Increased brightness
   }
 
-  // .grid {
-  //   height: 800px;
-  //   width: 800px;
-  //   background-image: linear-gradient(to right, #0f0f10 1px, transparent 1px),
-  //     linear-gradient(to bottom, #0f0f10 1px, transparent 1px);
-  //   background-size: 1rem 1rem;
-  //   background-position: center center;
-  //   position: absolute;
-  //   z-index: -1;
-  //   filter: blur(1px);
-  // }
+  .grid {
+    height: 800px;
+    width: 800px;
+    background-image: linear-gradient(to right, #0f0f10 1px, transparent 1px),
+      linear-gradient(to bottom, #0f0f10 1px, transparent 1px);
+    background-size: 1rem 1rem;
+    background-position: center center;
+    position: absolute;
+    z-index: -1;
+    filter: blur(1px);
+  }
 
   .white,
   .border,
@@ -96,6 +96,38 @@ const StyledWrapper = styled.div`
     /* Border Radius */
     border-radius: 12px;
     filter: blur(3px);
+  }
+
+  .prompt {
+    background-color: #010201;
+    border: none;
+    resize: none;
+    overflow-y: hidden;
+    padding: 24px 20px;
+    width: 602px;
+    height: 78px;
+    border-radius: 10px;
+    color: white;
+    padding-inline: 59px 146px;
+    font-size: 16px;
+    backdrop-filter: blur(5px); // Add subtle blur effect
+    box-shadow: 0 0 20px rgba(207, 48, 170, 0.1); // Add subtle glow
+  }
+
+  #poda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .prompt::placeholder {
+    color: #c0b9c0;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .prompt:focus {
+    outline: none;
   }
 
   #main:focus-within > #input-mask {
@@ -322,52 +354,18 @@ const StyledWrapper = styled.div`
     }
   }
 
-  #poda {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .prompt {
-    background-color: #010201;
-    border: none;
-    resize: none;
-    overflow-y: hidden;
-    padding: 24px 70px 60px 60px;
-    width: 70vw;
-    height: 30vh;
-    border-radius: 10px;
-    color: white;
-    // padding-inline: 59px 146px;
-    font-size: 12px;
-    backdrop-filter: blur(5px); // Add subtle blur effect
-    box-shadow: 0 0 20px rgba(207, 48, 170, 0.1); // Add subtle glow
-  }
-
-  .prompt::placeholder {
-    color: #c0b9c0;
-    font-size: 12px;
-    font-weight: 500;
-  }
-
-  .prompt:focus {
-    outline: none;
-  }
-
   #submit {
     // background: linear-gradient(90deg, #402fb5, #cf30aa);
     background: linear-gradient(180deg, #161329, black, #1d1b4b);
     border: 1px solid transparent;
     border: none;
     color: white;
-    padding: 3px 8px;
+    padding: 10px 20px;
     text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
     text-decoration: none;
     display: inline-block;
-    margin: 3px 1px;
+    font-size: 16px;
+    margin: 4px 2px;
     cursor: pointer;
     border-radius: 10px;
     width: 100%;
@@ -405,8 +403,8 @@ const StyledWrapper = styled.div`
     align-items: center;
     justify-content: center;
     z-index: 2;
-    max-height: 30px;
-    max-width: 80px;
+    max-height: 40px;
+    max-width: 120px;
     height: 100%;
     width: 100%;
 
@@ -421,8 +419,8 @@ const StyledWrapper = styled.div`
   }
 
   .filterBorder {
-    height: 32px;
-    width: 82px;
+    height: 42px;
+    width: 122px;
     position: absolute;
     overflow: hidden;
     bottom: 20px; /* Changed from top to bottom */
@@ -461,116 +459,6 @@ const StyledWrapper = styled.div`
     left: 20px;
     top: 22px;
   }
-
-  /* Mobile-first media queries */
-  @media (min-width: 768px) {
-
-  .prompt {
-    background-color: #010201;
-    border: none;
-    resize: none;
-    overflow-y: hidden;
-    padding: 24px 20px;
-    width: 602px;
-    height: 78px;
-    border-radius: 10px;
-    color: white;
-    padding-inline: 59px 146px;
-    font-size: 16px;
-    backdrop-filter: blur(5px); // Add subtle blur effect
-    box-shadow: 0 0 20px rgba(207, 48, 170, 0.1); // Add subtle glow
-  }
-
-  #submit {
-    // background: linear-gradient(90deg, #402fb5, #cf30aa);
-    background: linear-gradient(180deg, #161329, black, #1d1b4b);
-    border: 1px solid transparent;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 0 15px rgba(207, 48, 170, 0.15);
-  }
-
-
-  #filter-icon {
-    position: absolute;
-    bottom: 21px; /* Changed from top to bottom */
-    right: 21px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-    max-height: 40px;
-    max-width: 120px;
-    height: 100%;
-    width: 100%;
-
-    isolation: isolate;
-    overflow: hidden;
-    /* Border Radius */
-    border-radius: 10px;
-    background: linear-gradient(180deg, #161329, black, #1d1b4b);
-    border: 1px solid transparent;
-
-    box-shadow: 0 0 15px rgba(207, 48, 170, 0.15);
-  }
-
-  .filterBorder {
-      height: 42px;
-      width: 122px;
-      position: absolute;
-      overflow: hidden;
-      bottom: 20px; /* Changed from top to bottom */
-      right: 20px;
-      border-radius: 10px;
-    }
-
-    .filterBorder::before {
-      content: "";
-
-      text-align: center;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(90deg);
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      background-repeat: no-repeat;
-      background-position: 0 0;
-      filter: brightness(1.35);
-      background-image: conic-gradient(
-        rgba(0, 0, 0, 0),
-        #3d3a4f,
-        rgba(0, 0, 0, 0) 50%,
-        rgba(0, 0, 0, 0) 50%,
-        #3d3a4f,
-        rgba(0, 0, 0, 0) 100%
-      );
-      animation: rotate 4s linear infinite;
-    }
-
-    #main {
-      position: relative;
-    }
-
-    #search-icon {
-      position: absolute;
-      left: 20px;
-      top: 22px;
-    }
-
-  }
-
 `;
 
 export default Input;
