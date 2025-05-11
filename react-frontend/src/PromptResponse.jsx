@@ -77,7 +77,7 @@ const PromptResponse = () => {
   return (
     <StyledWrapper>
 
-      <div>
+      <>
         <div className="grid" />
         <div id="poda">
           <div className="glow" />
@@ -95,8 +95,8 @@ const PromptResponse = () => {
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
             ></textarea>
-            {/* <div id="input-mask" />
-            <div id="pink-mask" /> */}
+            <div id="input-mask" />
+            <div id="pink-mask" />
             <div className="filterBorder" />
             <div id="filter-icon">
               <button id="submit" onClick={handleSubmit} disabled={isLoading}>
@@ -121,11 +121,11 @@ const PromptResponse = () => {
           </div>
 
           <div id="response">
-            <strong>{response}</strong>
+            { response ? response : null}
           </div>
 
         </div>
-      </div>
+      </>
 
     </StyledWrapper>
   );
@@ -134,7 +134,9 @@ const PromptResponse = () => {
 
 
 const StyledWrapper = styled.div`
-  position: relative;
+  position: fixed; // Change from relative to fixed
+  inset: 0; // This ensures the wrapper covers the entire viewport
+  overflow: hidden; // Prevent scrolling on the wrapper
   display: flex;
   justify-content: center;
   align-items: center;
@@ -412,6 +414,8 @@ const StyledWrapper = styled.div`
   }
 
   #poda {
+    position: relative;
+    max-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -421,7 +425,9 @@ const StyledWrapper = styled.div`
     background-color: #010201;
     border: none;
     resize: none;
-    overflow-y: hidden;
+    overflow-y: auto; // Change from hidden to auto
+    -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+    scrollbar-width: thin; // For Firefox
     padding: 24px 70px 60px 60px;
     width: 70vw;
     height: 30vh;
@@ -431,6 +437,20 @@ const StyledWrapper = styled.div`
     font-size: 12px;
     backdrop-filter: blur(5px); // Add subtle blur effect
     box-shadow: 0 0 20px rgba(207, 48, 170, 0.1); // Add subtle glow
+
+    // Add custom scrollbar styling
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba(207, 48, 170, 0.3);
+      border-radius: 3px;
+    }
   }
 
   .prompt::placeholder {
@@ -441,6 +461,43 @@ const StyledWrapper = styled.div`
 
   .prompt:focus {
     outline: none;
+  }
+
+  // #response {
+  //   position: absolute;
+  //   top: 100px; 
+  //   transform: translateY(10%); 
+  //   width: 100%;
+  //   max-width: 80vw;
+  //   padding: 20px;
+  //   z-index: 1;
+  //   font-size: 12px;
+  //   font-weight: 500;
+  //   line-height: 1.5;
+  //   color: #c0b9c0;
+  //   background: linear-gradient(180deg, #16132977, black, #1d1b4b77);
+  // }
+
+  #response {
+    position: absolute;
+    top: 100px;
+    transform: translateY(10%);
+    width: 100%;
+    max-width: 80vw;
+    padding: 20px;
+    z-index: 1;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #c0b9c0;
+    background: radial-gradient(circle at center, rgba(29, 24, 60, 0.1) 0%, rgba(13, 12, 35, 0.7) 100%);
+    border-radius: 10px;
+    backdrop-filter: blur(16px);
+    display: block; /* Default display */
+  }
+
+  #response:empty {
+    display: none; /* Hide when empty */
   }
 
   #submit {
@@ -558,7 +615,9 @@ const StyledWrapper = styled.div`
     background-color: #010201;
     border: none;
     resize: none;
-    overflow-y: hidden;
+    overflow-y: auto; // Change from hidden to auto
+    -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+    scrollbar-width: thin; // For Firefox
     padding: 24px 20px;
     width: 602px;
     height: 78px;
@@ -568,6 +627,20 @@ const StyledWrapper = styled.div`
     font-size: 16px;
     backdrop-filter: blur(5px); // Add subtle blur effect
     box-shadow: 0 0 20px rgba(207, 48, 170, 0.1); // Add subtle glow
+
+    // Add custom scrollbar styling
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: rgba(207, 48, 170, 0.3);
+      border-radius: 3px;
+    }
   }
 
   #submit {
