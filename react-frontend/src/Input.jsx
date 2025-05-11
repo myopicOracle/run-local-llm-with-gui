@@ -36,8 +36,8 @@ const Input = () => {
                 </defs>
               </svg>
             </div>
-            <div id="response"></div>
           </div>
+          <div id="response"></div>
         </div>
       </div>
     </StyledWrapper>
