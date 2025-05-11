@@ -13,7 +13,7 @@ const PromptResponse = () => {
     let fullResponse = '';
 
     try {
-      const response = await fetch('https://87d8-135-0-165-43.ngrok-free.app/generate', {
+      const response = await fetch('https://e619-135-0-165-43.ngrok-free.app/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt }),
