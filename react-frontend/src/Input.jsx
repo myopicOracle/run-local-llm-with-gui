@@ -14,12 +14,12 @@ const Input = () => {
           <div className="white" />
           <div className="border" />
           <div id="main">
-            <textarea id="prompt" rows="5" placeholder="Enter your prompt..." className="input" ></textarea>
-            <div id="input-mask" />
-            <div id="pink-mask" />
+            <textarea id="prompt" rows="5" placeholder="Enter your prompt..." className="prompt" ></textarea>
+            {/* <div id="input-mask" />
+            <div id="pink-mask" /> */}
             <div className="filterBorder" />
             <div id="filter-icon">
-              <button id="submit-button">Submit</button>
+              <button id="submit">Submit</button>
             </div>
             <div id="search-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width={24} viewBox="0 0 24 24" strokeWidth={2} strokeLinejoin="round" strokeLinecap="round" height={24} fill="none" className="feather feather-search">
@@ -36,6 +36,7 @@ const Input = () => {
                 </defs>
               </svg>
             </div>
+            <div id="response"></div>
           </div>
         </div>
       </div>
@@ -69,7 +70,6 @@ const StyledWrapper = styled.div`
     filter: blur(3px) brightness(1.2); // Increased brightness
   }
 
-
   .grid {
     height: 800px;
     width: 800px;
@@ -97,30 +97,36 @@ const StyledWrapper = styled.div`
     border-radius: 12px;
     filter: blur(3px);
   }
-  .input {
+
+  .prompt {
     background-color: #010201;
     border: none;
-    overflow: hidden;
-    padding: 7px;
+    resize: none;
+    overflow-y: hidden;
+    padding: 24px 20px;
     width: 602px;
     height: 78px;
     border-radius: 10px;
     color: white;
-    padding-inline: 59px;
-    font-size: 18px;
+    padding-inline: 59px 146px;
+    font-size: 16px;
     backdrop-filter: blur(5px); // Add subtle blur effect
     box-shadow: 0 0 20px rgba(207, 48, 170, 0.1); // Add subtle glow
   }
+
   #poda {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .input::placeholder {
+
+  .prompt::placeholder {
     color: #c0b9c0;
+    font-size: 20px;
+    font-weight: 500;
   }
 
-  .input:focus {
+  .prompt:focus {
     outline: none;
   }
 
@@ -137,6 +143,7 @@ const StyledWrapper = styled.div`
     top: 18px;
     left: 70px;
   }
+    
   #pink-mask {
     pointer-events: none;
     width: 30px;
@@ -152,6 +159,7 @@ const StyledWrapper = styled.div`
     opacity: 0.9; // Increased opacity
     filter: blur(15px); // Adjusted blur
   }
+    
   #main:hover > #pink-mask {
     //animation: rotate 4s linear infinite;
     opacity: 0;
@@ -346,8 +354,10 @@ const StyledWrapper = styled.div`
     }
   }
 
-  #submit-button {
-    background: linear-gradient(90deg, #402fb5, #cf30aa);
+  #submit {
+    // background: linear-gradient(90deg, #402fb5, #cf30aa);
+    background: linear-gradient(180deg, #161329, black, #1d1b4b);
+    border: 1px solid transparent;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -364,16 +374,37 @@ const StyledWrapper = styled.div`
     box-shadow: 0 0 15px rgba(207, 48, 170, 0.15);
   }
 
+  // #submit {
+  //   position: absolute;
+  //   top: 8px;
+  //   right: 8px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   z-index: 2;
+  //   max-height: 40px;
+  //   max-width: 64px;
+  //   height: 100%;
+  //   width: 100%;
+
+  //   isolation: isolate;
+  //   overflow: hidden;
+  //   /* Border Radius */
+  //   border-radius: 10px;
+  //   background: linear-gradient(180deg, #161329, black, #1d1b4b);
+  //   border: 1px solid transparent;
+  // }
+
   #filter-icon {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    bottom: 21px; /* Changed from top to bottom */
+    right: 21px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
     max-height: 40px;
-    max-width: 64px;
+    max-width: 120px;
     height: 100%;
     width: 100%;
 
@@ -389,11 +420,11 @@ const StyledWrapper = styled.div`
 
   .filterBorder {
     height: 42px;
-    width: 40px;
+    width: 122px;
     position: absolute;
     overflow: hidden;
-    top: 7px;
-    right: 7px;
+    bottom: 20px; /* Changed from top to bottom */
+    right: 20px;
     border-radius: 10px;
   }
 
@@ -426,7 +457,8 @@ const StyledWrapper = styled.div`
   #search-icon {
     position: absolute;
     left: 20px;
-    top: 15px;
-  }`;
+    top: 22px;
+  }
+`;
 
 export default Input;
