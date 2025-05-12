@@ -738,7 +738,7 @@ const StyledWrapper = styled.div`
   #response {
     position: absolute;
     top: 100px;
-    transform: translateY(20%);
+    transform: translateY(12px);
     width: 100%;
     max-width: 80vw;
     max-height: 25vh;
