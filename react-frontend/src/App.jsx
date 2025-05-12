@@ -23,10 +23,23 @@ const AppWrapper = styled.div`
   
   h1 {
     position: fixed;
-    top: 2rem;
+    top: 0.5rem;
     left: 2rem;
     font-size: 2rem;
     z-index: 10;
+  }
+
+  /* DESKTOP-and-ABOVE media queries */
+  @media (min-width: 768px) {
+  
+    h1 {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      font-size: 2rem;
+      z-index: 10;
+    }
+  
   }
     
 `;
