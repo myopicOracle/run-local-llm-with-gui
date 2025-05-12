@@ -117,15 +117,15 @@ const PromptResponse = () => {
                 </defs>
               </svg>
             </div>
-          </div>
 
-          <div id="response">
-            { response ? response : null}
-          </div>
-          {/* <div id="response">
-            { response ? response : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis arcu felis. Nulla est tortor, pellentesque eu porta ac, maximus id tortor. Suspendisse potenti. Suspendisse sit amet tellus iaculis, egestas magna at, porta magna. Phasellus eleifend sodales lorem, id tempor libero rutrum in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam congue, lorem nec semper blandit, tellus mi laoreet nisl, sit amet scelerisque augue risus eu felis. Vivamus eget est maximus, gravida libero vitae, dignissim arcu. Suspendisse eget mauris ex. Vivamus id finibus arcu. Proin semper venenatis ipsum, in interdum urna efficitur vitae. In hac habitasse platea dictumst. Mauris mollis felis nec augue pulvinar imperdiet non vel risus. Phasellus ut ex ultrices, aliquam nibh eu, molestie massa. Aliquam sit amet maximus leo, at bibendum libero. Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis arcu felis. Nulla est tortor, pellentesque eu porta ac, maximus id tortor. Suspendisse potenti. Suspendisse sit amet tellus iaculis, egestas magna at, porta magna. Phasellus eleifend sodales lorem, id tempor libero rutrum in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam congue, lorem nec semper blandit, tellus mi laoreet nisl, sit amet scelerisque augue risus eu felis. Vivamus eget est maximus, gravida libero vitae, dignissim arcu. Suspendisse eget mauris ex. Vivamus id finibus arcu. Proin semper venenatis ipsum, in interdum urna efficitur vitae. In hac habitasse platea dictumst. Mauris mollis felis nec augue pulvinar imperdiet non vel risus. Phasellus ut ex ultrices, aliquam nibh eu, molestie massa. Aliquam sit amet maximus leo, at bibendum libero. Nulla facilisi.'}
-          </div> */}
+            <div id="response">
+              { response ? response : null}
+            </div>
+            {/* <div id="response">
+              { response ? response : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis arcu felis. Nulla est tortor, pellentesque eu porta ac, maximus id tortor. Suspendisse potenti. Suspendisse sit amet tellus iaculis, egestas magna at, porta magna. Phasellus eleifend sodales lorem, id tempor libero rutrum in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam congue, lorem nec semper blandit, tellus mi laoreet nisl, sit amet scelerisque augue risus eu felis. Vivamus eget est maximus, gravida libero vitae, dignissim arcu. Suspendisse eget mauris ex. Vivamus id finibus arcu. Proin semper venenatis ipsum, in interdum urna efficitur vitae. In hac habitasse platea dictumst. Mauris mollis felis nec augue pulvinar imperdiet non vel risus. Phasellus ut ex ultrices, aliquam nibh eu, molestie massa. Aliquam sit amet maximus leo, at bibendum libero. Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis arcu felis. Nulla est tortor, pellentesque eu porta ac, maximus id tortor. Suspendisse potenti. Suspendisse sit amet tellus iaculis, egestas magna at, porta magna. Phasellus eleifend sodales lorem, id tempor libero rutrum in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam congue, lorem nec semper blandit, tellus mi laoreet nisl, sit amet scelerisque augue risus eu felis. Vivamus eget est maximus, gravida libero vitae, dignissim arcu. Suspendisse eget mauris ex. Vivamus id finibus arcu. Proin semper venenatis ipsum, in interdum urna efficitur vitae. In hac habitasse platea dictumst. Mauris mollis felis nec augue pulvinar imperdiet non vel risus. Phasellus ut ex ultrices, aliquam nibh eu, molestie massa. Aliquam sit amet maximus leo, at bibendum libero. Nulla facilisi.'}
+            </div> */}
 
+          </div>
         </div>
 
     </StyledWrapper>
@@ -622,6 +622,40 @@ const StyledWrapper = styled.div`
     }
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 /////////////////////////////////////////////////////////////
 
   /* MOBILE SIZES - BELOW 768px */
@@ -634,7 +668,7 @@ const StyledWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(-20%);
+    transform: translateY(-25%);
   }
 
   .prompt {
@@ -737,14 +771,14 @@ const StyledWrapper = styled.div`
 
   #response {
     position: absolute;
-    top: 100px;
+    // top: 100px;
     transform: translateY(12px);
     width: 100%;
     max-width: 80vw;
     max-height: 25vh;
     height: auto;
     overflow-y: auto;
-    padding: 20px 5px 20px 20px;
+    padding: 20px 6px 20px 18px;
     z-index: 1;
     font-family: 'Baumans', sans-serif;
     // font-family: 'Exo 2', sans-serif;
@@ -920,14 +954,50 @@ const StyledWrapper = styled.div`
     );
     animation: rotate 4s linear infinite;
   }
+
   #main {
     position: relative;
   }
+
   #search-icon {
     position: absolute;
     left: 20px;
     top: 22px;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /////////////////////////////////////////////////////////////
