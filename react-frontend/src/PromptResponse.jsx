@@ -57,7 +57,7 @@ const PromptResponse = () => {
         }
       }
 
-      setResponse(`Complete Response: ${fullResponse}`);
+      setResponse(`${fullResponse}`);
     } catch (error) {
       console.error('Error in getPrediction:', error);
       setResponse(`Request failed: ${error.message}`);
@@ -621,6 +621,12 @@ const StyledWrapper = styled.div`
     }
   }
 
+/////////////////////////////////////////////////////////////
+
+  /* MOBILE SIZES - BELOW 768px */
+
+/////////////////////////////////////////////////////////////
+
   #poda {
     position: relative;
     max-height: 100vh;
@@ -636,28 +642,69 @@ const StyledWrapper = styled.div`
     overflow-y: auto; // Change from hidden to auto
     -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
     scrollbar-width: thin; // For Firefox
-    padding: 24px 70px 60px 60px;
+    padding: 24px 24px 60px 54px;
     width: 70vw;
     height: 15vh;
     border-radius: 10px;
     color: white;
-    // padding-inline: 59px 146px;
     font-size: 12px;
+    // font-family: 'Baumans', sans-serif;
+    // font-family: 'Exo 2', sans-serif;
+    // font-family: 'Zen Maru Gothic', sans-serif;
+    font-family: 'Jura', sans-serif;
+    // font-family: 'Oxanium', sans-serif;
+    // font-family: 'Roboto', sans-serif;
+    line-height: 1.3;
+    font-weight: 400;
     backdrop-filter: blur(20px); // Add subtle blur effect
     box-shadow: 0 0 20px rgba(207, 48, 170, 0.1); // Add subtle glow
 
-    // Add custom scrollbar styling
+    /* Firefox scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.6s ease;
+
+    &:hover {
+      scrollbar-color: rgba(207, 48, 170, 0.5) transparent;
+    }
+
+    /* Chrome/WebKit scrollbar */
     &::-webkit-scrollbar {
       width: 6px;
+      height: 0; // Remove horizontal scrollbar
     }
-    
+
     &::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.1);
-    }
-    
-    &::-webkit-scrollbar-thumb {
-      background: rgba(207, 48, 170, 0.3);
+      background: transparent;
       border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(207, 48, 170, 0); // Start fully transparent
+      border-radius: 3px;
+      transition: background-color 0.3s ease;
+    }
+
+    &::-webkit-scrollbar-button {
+      display: none; // Remove scrollbar buttons
+      height: 0;
+      width: 0;
+    }
+
+    /* Show scrollbar on hover/scroll */
+    &:hover::-webkit-scrollbar-thumb {
+      background: rgba(207, 48, 170, 0.5);
+    }
+
+    &:hover::-webkit-scrollbar-thumb:hover {
+      background: rgba(207, 48, 170, 0.8);
+    }
+
+    /* Ensure content doesn't shift when scrollbar appears */
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-thumb {
+      background-clip: padding-box;
+      border: 2px solid transparent;
     }
   }
 
@@ -689,11 +736,17 @@ const StyledWrapper = styled.div`
   #response {
     position: absolute;
     top: 100px;
-    transform: translateY(10%);
+    transform: translateY(60%);
     width: 100%;
     max-width: 80vw;
     padding: 20px;
     z-index: 1;
+    font-family: 'Baumans', sans-serif;
+    // font-family: 'Exo 2', sans-serif;
+    // font-family: 'Zen Maru Gothic', sans-serif;
+    // font-family: 'Jura', sans-serif;
+    // font-family: 'Oxanium', sans-serif;
+    // font-family: 'Roboto', sans-serif;
     font-size: 12px;
     font-weight: 500;
     line-height: 1.5;
@@ -716,8 +769,14 @@ const StyledWrapper = styled.div`
     color: white;
     padding: 3px 8px;
     text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-size: 12px;
+    // font-family: 'Baumans', sans-serif;
+    font-family: 'Orbitron', sans-serif;
+    // font-family: 'Oxanium', sans-serif;
+    // font-family: 'Exo 2', sans-serif;
+    // font-family: 'Zen Maru Gothic', sans-serif;
+    // font-family: 'Jura', sans-serif;
+    // font-family: 'Roboto', sans-serif;
+    font-size: 10px;
     font-weight: 700;
     text-decoration: none;
     display: inline-block;
@@ -816,40 +875,84 @@ const StyledWrapper = styled.div`
     top: 22px;
   }
 
-  /* Mobile-first media queries */
+
+/////////////////////////////////////////////////////////////
+
+  /* DESKTOP-and-ABOVE media queries */
   @media (min-width: 768px) {
 
   .prompt {
-    background-color:rgba(1, 2, 1, 0.8);
+    background-color: rgba(1, 2, 1, 0.8);
     border: none;
     resize: none;
-    overflow-y: auto; // Change from hidden to auto
-    -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
-    scrollbar-width: thin; // For Firefox
-    padding: 24px 20px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 24px 128px 24px 59px;
     width: 602px;
-    height: 78px;
+    // height: 11vw;
     border-radius: 10px;
     color: white;
-    padding-inline: 59px 146px;
     font-size: 14px;
-    backdrop-filter: blur(15px); // Add subtle blur effect
-    box-shadow: 0 0 20px rgba(207, 48, 170, 0.1); // Add subtle glow
+    // font-family: 'Baumans', sans-serif;
+    // font-family: 'Exo 2', sans-serif;
+    // font-family: 'Zen Maru Gothic', sans-serif;
+    font-family: 'Jura', sans-serif;
+    // font-family: 'Oxanium', sans-serif;
+    // font-family: 'Roboto', sans-serif;
+    line-height: 1.3;
+    font-weight: 400;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 20px rgba(207, 48, 170, 0.1);
 
-    // Add custom scrollbar styling
+    /* Firefox scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.6s ease;
+
+    &:hover {
+      scrollbar-color: rgba(207, 48, 170, 0.5) transparent;
+    }
+
+    /* Chrome/WebKit scrollbar */
     &::-webkit-scrollbar {
       width: 6px;
+      height: 0; // Remove horizontal scrollbar
     }
-    
+
     &::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.1);
-    }
-    
-    &::-webkit-scrollbar-thumb {
-      background: rgba(207, 48, 170, 0.3);
+      background: transparent;
       border-radius: 3px;
     }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(207, 48, 170, 0); // Start fully transparent
+      border-radius: 3px;
+      transition: background-color 0.3s ease;
+    }
+
+    &::-webkit-scrollbar-button {
+      display: none; // Remove scrollbar buttons
+      height: 0;
+      width: 0;
+    }
+
+    /* Show scrollbar on hover/scroll */
+    &:hover::-webkit-scrollbar-thumb {
+      background: rgba(207, 48, 170, 0.5);
+    }
+
+    &:hover::-webkit-scrollbar-thumb:hover {
+      background: rgba(207, 48, 170, 0.8);
+    }
+
+    /* Ensure content doesn't shift when scrollbar appears */
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-thumb {
+      background-clip: padding-box;
+      border: 2px solid transparent;
+    }
   }
+
 
   .prompt::placeholder {
     color: #c0b9c0;
@@ -861,17 +964,48 @@ const StyledWrapper = styled.div`
     outline: none;
   }
 
+  #response {
+    position: absolute;
+    top: 100px;
+    transform: translateY(60%);
+    width: 100%;
+    max-width: 80vw;
+    padding: 20px;
+    z-index: 1;
+    font-family: 'Baumans', sans-serif;
+    // font-family: 'Exo 2', sans-serif;
+    // font-family: 'Zen Maru Gothic', sans-serif;
+    // font-family: 'Jura', sans-serif;
+    // font-family: 'Oxanium', sans-serif;
+    // font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #c0b9c0;
+    background: radial-gradient(circle at center, rgba(29, 24, 60, 0.1) 0%, rgba(13, 12, 35, 0.7) 100%);
+    border-radius: 10px;
+    backdrop-filter: blur(16px);
+    display: block; /* Default display */
+  }
+
   #submit {
     // background: linear-gradient(90deg, #402fb5, #cf30aa);
     background: linear-gradient(180deg, #161329, black, #1d1b4b);
     border: 1px solid transparent;
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 16px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px;
+    // font-family: 'Baumans', sans-serif;
+    font-family: 'Orbitron', sans-serif;
+    // font-family: 'Oxanium', sans-serif;
+    // font-family: 'Exo 2', sans-serif;
+    // font-family: 'Zen Maru Gothic', sans-serif;
+    // font-family: 'Jura', sans-serif;
+    // font-family: 'Roboto', sans-serif;
+    font-size: 12px;
     font-weight: 700;
     margin: 4px 2px;
     cursor: pointer;
@@ -885,14 +1019,14 @@ const StyledWrapper = styled.div`
 
   #filter-icon {
     position: absolute;
-    bottom: 21px; /* Changed from top to bottom */
-    right: 21px;
+    bottom: 19px; /* Changed from top to bottom */
+    right: 19px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2;
-    max-height: 40px;
-    max-width: 120px;
+    max-height: 36px;
+    max-width: 100px;
     height: 100%;
     width: 100%;
 
@@ -907,12 +1041,12 @@ const StyledWrapper = styled.div`
   }
 
   .filterBorder {
-      height: 42px;
-      width: 122px;
+      height: 38px;
+      width: 102px;
       position: absolute;
       overflow: hidden;
-      bottom: 20px; /* Changed from top to bottom */
-      right: 20px;
+      bottom: 18px; /* Changed from top to bottom */
+      right: 18px;
       border-radius: 10px;
     }
 
