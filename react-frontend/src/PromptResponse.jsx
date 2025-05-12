@@ -118,12 +118,12 @@ const PromptResponse = () => {
               </svg>
             </div>
 
-            {/* <div id="response">
-              { response ? response : null}
-            </div> */}
             <div id="response">
-              { response ? response : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis arcu felis. Nulla est tortor, pellentesque eu porta ac, maximus id tortor. Suspendisse potenti. Suspendisse sit amet tellus iaculis, egestas magna at, porta magna. Phasellus eleifend sodales lorem, id tempor libero rutrum in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam congue, lorem nec semper blandit, tellus mi laoreet nisl, sit amet scelerisque augue risus eu felis. Vivamus eget est maximus, gravida libero vitae, dignissim arcu. Suspendisse eget mauris ex. Vivamus id finibus arcu. Proin semper venenatis ipsum, in interdum urna efficitur vitae. In hac habitasse platea dictumst. Mauris mollis felis nec augue pulvinar imperdiet non vel risus. Phasellus ut ex ultrices, aliquam nibh eu, molestie massa. Aliquam sit amet maximus leo, at bibendum libero. Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis arcu felis. Nulla est tortor, pellentesque eu porta ac, maximus id tortor. Suspendisse potenti. Suspendisse sit amet tellus iaculis, egestas magna at, porta magna. Phasellus eleifend sodales lorem, id tempor libero rutrum in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam congue, lorem nec semper blandit, tellus mi laoreet nisl, sit amet scelerisque augue risus eu felis. Vivamus eget est maximus, gravida libero vitae, dignissim arcu. Suspendisse eget mauris ex. Vivamus id finibus arcu. Proin semper venenatis ipsum, in interdum urna efficitur vitae. In hac habitasse platea dictumst. Mauris mollis felis nec augue pulvinar imperdiet non vel risus. Phasellus ut ex ultrices, aliquam nibh eu, molestie massa. Aliquam sit amet maximus leo, at bibendum libero. Nulla facilisi.'}
+              { response ? response : null}
             </div>
+            {/* <div id="response">
+              { response ? response : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis arcu felis. Nulla est tortor, pellentesque eu porta ac, maximus id tortor. Suspendisse potenti. Suspendisse sit amet tellus iaculis, egestas magna at, porta magna. Phasellus eleifend sodales lorem, id tempor libero rutrum in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam congue, lorem nec semper blandit, tellus mi laoreet nisl, sit amet scelerisque augue risus eu felis. Vivamus eget est maximus, gravida libero vitae, dignissim arcu. Suspendisse eget mauris ex. Vivamus id finibus arcu. Proin semper venenatis ipsum, in interdum urna efficitur vitae. In hac habitasse platea dictumst. Mauris mollis felis nec augue pulvinar imperdiet non vel risus. Phasellus ut ex ultrices, aliquam nibh eu, molestie massa. Aliquam sit amet maximus leo, at bibendum libero. Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis arcu felis. Nulla est tortor, pellentesque eu porta ac, maximus id tortor. Suspendisse potenti. Suspendisse sit amet tellus iaculis, egestas magna at, porta magna. Phasellus eleifend sodales lorem, id tempor libero rutrum in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam congue, lorem nec semper blandit, tellus mi laoreet nisl, sit amet scelerisque augue risus eu felis. Vivamus eget est maximus, gravida libero vitae, dignissim arcu. Suspendisse eget mauris ex. Vivamus id finibus arcu. Proin semper venenatis ipsum, in interdum urna efficitur vitae. In hac habitasse platea dictumst. Mauris mollis felis nec augue pulvinar imperdiet non vel risus. Phasellus ut ex ultrices, aliquam nibh eu, molestie massa. Aliquam sit amet maximus leo, at bibendum libero. Nulla facilisi.'}
+            </div> */}
 
           </div>
         </div>
@@ -668,7 +668,7 @@ const StyledWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translateY(-25%);
+    transform: translateY(-20%);
   }
 
   .prompt {
