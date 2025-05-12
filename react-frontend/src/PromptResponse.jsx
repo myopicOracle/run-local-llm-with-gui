@@ -119,8 +119,11 @@ const PromptResponse = () => {
             </div>
           </div>
 
-          <div id="response">
+          {/* <div id="response">
             { response ? response : null}
+          </div> */}
+          <div id="response">
+            { response ? response : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis arcu felis. Nulla est tortor, pellentesque eu porta ac, maximus id tortor. Suspendisse potenti. Suspendisse sit amet tellus iaculis, egestas magna at, porta magna. Phasellus eleifend sodales lorem, id tempor libero rutrum in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam congue, lorem nec semper blandit, tellus mi laoreet nisl, sit amet scelerisque augue risus eu felis. Vivamus eget est maximus, gravida libero vitae, dignissim arcu. Suspendisse eget mauris ex. Vivamus id finibus arcu. Proin semper venenatis ipsum, in interdum urna efficitur vitae. In hac habitasse platea dictumst. Mauris mollis felis nec augue pulvinar imperdiet non vel risus. Phasellus ut ex ultrices, aliquam nibh eu, molestie massa. Aliquam sit amet maximus leo, at bibendum libero. Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis arcu felis. Nulla est tortor, pellentesque eu porta ac, maximus id tortor. Suspendisse potenti. Suspendisse sit amet tellus iaculis, egestas magna at, porta magna. Phasellus eleifend sodales lorem, id tempor libero rutrum in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam congue, lorem nec semper blandit, tellus mi laoreet nisl, sit amet scelerisque augue risus eu felis. Vivamus eget est maximus, gravida libero vitae, dignissim arcu. Suspendisse eget mauris ex. Vivamus id finibus arcu. Proin semper venenatis ipsum, in interdum urna efficitur vitae. In hac habitasse platea dictumst. Mauris mollis felis nec augue pulvinar imperdiet non vel risus. Phasellus ut ex ultrices, aliquam nibh eu, molestie massa. Aliquam sit amet maximus leo, at bibendum libero. Nulla facilisi.'}
           </div>
 
         </div>
@@ -735,10 +738,13 @@ const StyledWrapper = styled.div`
   #response {
     position: absolute;
     top: 100px;
-    transform: translateY(60%);
+    transform: translateY(20%);
     width: 100%;
     max-width: 80vw;
-    padding: 20px;
+    max-height: 25vh;
+    height: auto;
+    overflow-y: auto;
+    padding: 20px 5px 20px 20px;
     z-index: 1;
     font-family: 'Baumans', sans-serif;
     // font-family: 'Exo 2', sans-serif;
@@ -754,6 +760,55 @@ const StyledWrapper = styled.div`
     border-radius: 10px;
     backdrop-filter: blur(16px);
     display: block; /* Default display */
+
+    /* Firefox scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.6s ease;
+
+    &:hover {
+      scrollbar-color: rgba(207, 48, 170, 0.5) transparent;
+    }
+
+    /* Chrome/WebKit scrollbar */
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 0; // Remove horizontal scrollbar
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(207, 48, 170, 0); // Start fully transparent
+      border-radius: 3px;
+      transition: background-color 0.3s ease;
+    }
+
+    &::-webkit-scrollbar-button {
+      display: none; // Remove scrollbar buttons
+      height: 0;
+      width: 0;
+    }
+
+    /* Show scrollbar on hover/scroll */
+    &:hover::-webkit-scrollbar-thumb {
+      background: rgba(207, 48, 170, 0.5);
+    }
+
+    &:hover::-webkit-scrollbar-thumb:hover {
+      background: rgba(207, 48, 170, 0.8);
+    }
+
+    /* Ensure content doesn't shift when scrollbar appears */
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-thumb {
+      background-clip: padding-box;
+      border: 2px solid transparent;
+    }
+    
   }
 
   #response:empty {
@@ -886,6 +941,7 @@ const StyledWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    transform: translateY(5%);
   }
 
   .prompt {
@@ -974,10 +1030,13 @@ const StyledWrapper = styled.div`
   #response {
     position: absolute;
     top: 100px;
-    transform: translateY(60%);
+    transform: translateY(10%);
     width: 100%;
     max-width: 80vw;
-    padding: 20px;
+    max-height: 25vh;
+    height: auto;
+    overflow-y: auto; 
+    padding: 20px 5px 20px 20px;
     z-index: 1;
     font-family: 'Baumans', sans-serif;
     // font-family: 'Exo 2', sans-serif;
@@ -993,6 +1052,55 @@ const StyledWrapper = styled.div`
     border-radius: 10px;
     backdrop-filter: blur(16px);
     display: block; /* Default display */
+
+    /* Firefox scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    transition: scrollbar-color 0.6s ease;
+
+    &:hover {
+      scrollbar-color: rgba(207, 48, 170, 0.5) transparent;
+    }
+
+    /* Chrome/WebKit scrollbar */
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 0; // Remove horizontal scrollbar
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(207, 48, 170, 0); // Start fully transparent
+      border-radius: 3px;
+      transition: background-color 0.3s ease;
+    }
+
+    &::-webkit-scrollbar-button {
+      display: none; // Remove scrollbar buttons
+      height: 0;
+      width: 0;
+    }
+
+    /* Show scrollbar on hover/scroll */
+    &:hover::-webkit-scrollbar-thumb {
+      background: rgba(207, 48, 170, 0.5);
+    }
+
+    &:hover::-webkit-scrollbar-thumb:hover {
+      background: rgba(207, 48, 170, 0.8);
+    }
+
+    /* Ensure content doesn't shift when scrollbar appears */
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-thumb {
+      background-clip: padding-box;
+      border: 2px solid transparent;
+    }
+
   }
 
   #submit {
