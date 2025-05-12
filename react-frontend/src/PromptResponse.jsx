@@ -77,7 +77,6 @@ const PromptResponse = () => {
   return (
     <StyledWrapper>
 
-      <>
         <div className="grid" />
         <div id="poda">
           <div className="glow" />
@@ -125,7 +124,6 @@ const PromptResponse = () => {
           </div>
 
         </div>
-      </>
 
     </StyledWrapper>
   );
@@ -633,6 +631,7 @@ const StyledWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    transform: translateY(-20%);
   }
 
   .prompt {
@@ -880,6 +879,14 @@ const StyledWrapper = styled.div`
 
   /* DESKTOP-and-ABOVE media queries */
   @media (min-width: 768px) {
+
+  #poda {
+    position: relative;
+    max-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .prompt {
     background-color: rgba(1, 2, 1, 0.8);
