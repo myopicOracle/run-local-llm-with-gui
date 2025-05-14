@@ -352,7 +352,7 @@ Copy the backend GUI files to a new directory that you'll upload to GitHub to pr
 
 That's it.
 
-Git init, push to GitHub, and the rest if (Vercel) history.
+Git init, push to GitHub, and the rest is (Vercel) history.
 
 ---
 **content last updated 05-10-2025*
