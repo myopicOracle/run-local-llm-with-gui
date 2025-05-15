@@ -12,14 +12,12 @@ const PromptResponse = () => {
     let fullResponse = "";
 
     try {
-      const response = await fetch(
-        "https://e619-135-0-165-43.ngrok-free.app/generate",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt }),
-        }
-      );
+      const ngrok = "https://a5e9-135-0-165-43.ngrok-free.app";
+      const response = await fetch(`${ngrok}/generate`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
