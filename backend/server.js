@@ -24,19 +24,16 @@ app.post('/generate', async (req, res) => {
     res.setHeader('Connection', 'keep-alive');
     
     const response = await axios.post(`${OLLAMA_API}/generate`, {
-      // model: 'phi4-mini-reasoning',
-      model: 'tinyllama',
-      // model: 'tinyllama:1.1b-chat-v1-q4_K_M',
-      // model: 'phi4-mini',
-      // model: 'qwen2.5-coder',
-      // model: 'deepseek-r1:1.5b',
-      // model: 'tinyllama:1.1b-chat-v1-q5_K_S',
-      // model: 'tinyllama:1.1b-chat-v1-q3_K_L',
-      // model: 'phi3.5',
-      // model: 'deepseek-r1:7b',
-      // model: 'smollm:1.7b',
+      model: 'tinyllama', 
+
+      // 'tinyllama' (1.3b) is good baseline to test setup and output latency. Would recommend for the GPU-unendowed,
+      // however for most use cases you will find the options listed in 'models_list.md' more suitable.
+
+      // Additionally, you may benefit from replacing 'tinyllama' with an array of models, should you wish to, 
+      // for example, select models from a drop-down directly in the UI.
+      
       prompt: prompt,
-      stream: true // Enable streaming
+      stream: true // Streaming enabled 
     }, { 
       responseType: 'stream',
       timeout: 60000 
