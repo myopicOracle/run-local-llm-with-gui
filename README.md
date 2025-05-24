@@ -16,14 +16,14 @@
 <br>
 
 ### Handling Raw Bytes Stream from Ollama API Endpoint
-[![Walkthrough: Handling Raw Bytes Stream from Ollama API Endpoint ](./assets/readme-thumbnail-1.gif)](https://youtu.be/YrV2Q_hCtw8?si=yeECOJN9WFXIBH30&t=230)  
+[![Walkthrough: Handling Raw Bytes Stream from Ollama API Endpoint ](./assets/thumb/readme-thumbnail-1.gif)](https://youtu.be/YrV2Q_hCtw8?si=yeECOJN9WFXIBH30&t=230)  
 ▶️ [Watch on YouTube](https://youtu.be/YrV2Q_hCtw8?si=yeECOJN9WFXIBH30&t=230)
 
 </br>
 <br>
 
 ### Exposing Your Local API for Remote Access w/ ngrok
-[![Walkthrough: Exposing Your Local API for Remote Access w/ ngrok](./assets/readme-thumbnail-2.gif)](https://youtu.be/Ky8DzoPFd4E?si=Qs5sORy2KA3whU32)  
+[![Walkthrough: Exposing Your Local API for Remote Access w/ ngrok](./assets/thumb/readme-thumbnail-2.gif)](https://youtu.be/Ky8DzoPFd4E?si=Qs5sORy2KA3whU32)  
 ▶️ [Watch on YouTube](https://youtu.be/Ky8DzoPFd4E?si=Qs5sORy2KA3whU32)
 
 </br>
