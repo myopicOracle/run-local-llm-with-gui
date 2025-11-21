@@ -136,4 +136,4 @@ dist
 .pnp.*
 
 # super secret stash
-_stash
+_stash/

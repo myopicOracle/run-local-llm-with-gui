@@ -12,8 +12,7 @@ const PromptResponse = () => {
     let fullResponse = "";
 
     try {
-      const ngrok = "https://a5e9-135-0-165-43.ngrok-free.app";
-      const response = await fetch(`${ngrok}/generate`, {
+      const response = await fetch("https://general-chat-endpoint.myopic-oracle.workers.dev/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt }),
