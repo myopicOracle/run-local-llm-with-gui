@@ -137,3 +137,4 @@ dist
 
 # super secret stash
 _stash/
+_non-deploy/
